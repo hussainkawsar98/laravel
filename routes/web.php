@@ -33,3 +33,6 @@ Route::group(['prefix' => 'account'], function(){
         return "logout";
     });
 });
+Route::get('/singleroute', 'singleController@singleRoute');
+Route::resource('/admin', 'postController');
+Route::get('/home', 'homeController@myHome');
