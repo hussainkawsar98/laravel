@@ -8,8 +8,8 @@
             <thead>
                 <tr>
                     <th>Serial</th>
-                    <th>Category Name</th>
-                    <th>Category Slug</th>
+                    <th>Sub Category Name</th>
+                    <th>Sub Category Slug</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -17,8 +17,8 @@
             @foreach($data as $key => $row)
                 <tr>
                     <td>{{ ++$key }}</td>
-                    <td>{{ $row->category_name }}</td>
-                    <td>{{ $row->category_slug }}</td>
+                    <td>{{ $row->subcategory_name }}</td>
+                    <td>{{ $row->subcategory_slug }}</td>
                     <td>
                         <a href="{{route('category.edit', $row->id)}}"><i class="bi bi-pencil-square"></i></a>
                         <form action="{{route('category.destroy', $row->id)}}" method="POST">

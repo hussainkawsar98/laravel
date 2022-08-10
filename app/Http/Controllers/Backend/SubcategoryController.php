@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Backend\Subcategory;
+use App\Models\Backend\Category;
 use Illuminate\Support\Str;
 use DB;
 
@@ -28,7 +29,8 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        return view('backend/subcategory/create');
+        $categories = Category::all();
+        return view('backend/subcategory/create', compact('categories'));
     }
 
     /**
@@ -39,7 +41,17 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validated = $request->validate([
+            'subcategory_name' => 'required|unique:subcategories',
+            'category_id' => 'required'
+        ]);
+
+        Subcategory::insert([
+            'category_id' => $request->category_id,
+            'subcategory_name' => $request->subcategory_name,
+            'subcategory_slug' => Str::of($request->subcategory_name)->slug('-'),
+        ]);
+        return redirect()->back()->with('success', 'Subcategory Successfully Inserted');
     }
 
     /**

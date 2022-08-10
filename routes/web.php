@@ -35,7 +35,7 @@ Route::resource('/backend/category', CategoryController::class);
 Route::group(['prefix'=>'backend'], function(){
     Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('subcategory.index');
     Route::get('/subcategory/create', [SubcategoryController::class, 'create'])->name('subcategory.create');
-    Route::get('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
+    Route::post('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
     Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');
     Route::get('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('subcategory.update');
     Route::get('/subcategory/{id}/edit', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
