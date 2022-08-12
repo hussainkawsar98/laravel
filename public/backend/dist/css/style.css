@@ -1,0 +1,23 @@
+/*!
+ *   B BLog
+ *   Author: Muktar Hussain
+ *   Website: Muktar Hussain <https://www.facebook.com/mhdevss>
+ */
+/*!
+ * Licensed under MIT (https://github.com/hussainkawsar98)
+ */
+
+ a {
+    color: #ffffff;
+ }
+ a:hover {
+   color: #2888bf!important;
+ }
+ .ul-error {
+  padding: 0;
+  list-style-type: none;
+ }
+.data-add-form input{
+  background-color: transparent;
+ }
+

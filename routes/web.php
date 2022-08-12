@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubcategoryController;
+use App\Http\Controllers\Backend\GlobalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,14 @@ Route::group(['prefix'=>'backend'], function(){
     Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');
     Route::get('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('subcategory.update');
     Route::get('/subcategory/{id}/edit', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
+});
+
+
+Route::get('/backend', function(){
+    return view('/backend/index');
+});
+
+//___Backend Global Controller___//
+Route::group(['prefix'=>'backend'], function(){
+    Route::get('/', [GlobalController::class, 'index'])->name('backend.index');
 });
