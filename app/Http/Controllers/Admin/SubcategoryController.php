@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Backend\Subcategory;
-use App\Models\Backend\Category;
+use App\Models\Admin\Subcategory;
+use App\Models\Admin\Category;
 use Illuminate\Support\Str;
 use DB;
 
@@ -21,7 +21,7 @@ class SubcategoryController extends Controller
         // $data = DB::table('subcategories')->leftjoin('categories', 'subcategories.category_id', 'categories.id')->select('subcategories.*', 'categories.category_name')->get();
         $data= Subcategory::all();
         // return response()->json($data);
-        return view('backend.subcategory.index', compact('data'));
+        return view('admin.sub-category.index', compact('data'));
     }
 
     /**
@@ -32,7 +32,7 @@ class SubcategoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('backend/subcategory/create', compact('categories'));
+        return view('admin.sub-category.create', compact('categories'));
     }
 
     /**
@@ -75,7 +75,8 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
-       
+        $data = Subcategory::find($id);
+        return view('admin.sub-category.edit', compact('data'));
     }
 
     /**
@@ -87,7 +88,18 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+       $data = Subcategory::find($id);
+
+       $valiadted = $request->validate([
+            'subcategory_name' => 'required|unique:subcategories'
+        ]);
+        return response()->json($data);
+        $data -> update([
+            'subcategory_name' => $request->subcategory_name,
+            'subcategory_slug' => Str::of($request->subcategory_name)->slug('-')
+        ]);
+        return redirect()->route('sub-category.index')->with('success', 'Update Successfully.');
+
     }
 
     /**

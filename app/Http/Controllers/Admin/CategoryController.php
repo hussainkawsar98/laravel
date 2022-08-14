@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Backend\Category;
+use App\Models\Admin\Category;
 use Illuminate\Support\Str;
 use DB;
 
@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::all();
-        return view('backend.category.index', compact('data'));
+        return view('admin.category.index', compact('data'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category.add-category');
+        return view('admin.category.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $data = Category::find($id);;
-        return view('backend.category.show', compact('data'));
+        return view('admin.category.show', compact('data'));
     }
 
     /**
@@ -76,7 +76,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $data = Category::find($id);
-        return view('backend.category.edit', compact('data'));
+        return view('admin.category.edit', compact('data'));
     }
 
     /**

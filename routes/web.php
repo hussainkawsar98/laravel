@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\SubcategoryController;
-use App\Http\Controllers\Backend\GlobalController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\GlobalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,34 +20,26 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', function(){
-    return "Home Page";
-});
-Route::get('/about', function(){
-    return "About Page";
-});
-
-//__Backend Route List__//
-
+//___Admin Route List__//
 //__Category Route__//
-Route::resource('/backend/category', CategoryController::class);
+Route::resource('/admin/category', CategoryController::class);
 
 //__Subcategory group__//
-Route::group(['prefix'=>'backend'], function(){
-    Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('subcategory.index');
-    Route::get('/subcategory/create', [SubcategoryController::class, 'create'])->name('subcategory.create');
-    Route::post('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
-    Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');
-    Route::get('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('subcategory.update');
-    Route::get('/subcategory/{id}/edit', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
+Route::group(['prefix'=>'admin'], function(){
+    Route::get('/sub-category', [SubcategoryController::class, 'index'])->name('sub-category.index');
+    Route::get('/sub-category/create', [SubcategoryController::class, 'create'])->name('sub-category.create');
+    Route::post('/sub-category/store', [SubcategoryController::class, 'store'])->name('sub-category.store');
+    Route::get('/sub-category/delete/{id}', [SubcategoryController::class, 'destroy'])->name('sub-category.destroy');
+    Route::put('/sub-category/update/{id}', [SubcategoryController::class, 'update'])->name('sub-category.update');
+    Route::get('/sub-category/{id}/edit', [SubcategoryController::class, 'edit'])->name('sub-category.edit');
 });
 
 
-Route::get('/backend', function(){
-    return view('/backend/index');
+Route::get('/admin', function(){
+    return view('/admin/index');
 });
 
-//___Backend Global Controller___//
-Route::group(['prefix'=>'backend'], function(){
-    Route::get('/', [GlobalController::class, 'index'])->name('backend.index');
+//__Admin Global Controller___//
+Route::group(['prefix'=>'admin'], function(){
+    Route::get('/', [GlobalController::class, 'index'])->name('admin.index');
 });

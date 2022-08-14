@@ -1,4 +1,4 @@
-@extends('backend.app')
+@extends('admin.app')
 
 @section('main-content')
         <!-- Content Wrapper. Contains page content -->
@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Category</h1>
+            <h1 class="m-0">Add Category</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Category</li>
+              <li class="breadcrumb-item active">Add Category</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -37,14 +37,13 @@
                   <li class="alert bg-danger">{{ $error }}</li>
               @endforeach
               </ul>
-              <form action="{{route('category.update', $data->id)}}" method="POST">
+              <form action="{{ route('category.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label class="form-label">Edit Category</label>
-                  <input type="hidden" name="_method" value="PUT">
-                  <input type="text" class="form-control" placeholder="Write Here" name="category_name"  value="{{$data->category_name}}">
+                  <label class="form-label">New Category</label>
+                  <input type="text" class="form-control" placeholder="Write Here" name="category_name">
                 </div>
-                <button type="submit" class="btn btn-primary">Update Category</button>
+                <button type="submit" class="btn btn-primary">Add Category</button>
               </form>
             </div>
           </div>

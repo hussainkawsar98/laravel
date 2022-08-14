@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class GlobalController extends Controller
 {
     public function index(){
-        return view('backend.index');
+        return view('admin.index');
     }
 }

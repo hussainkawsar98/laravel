@@ -1,6 +1,6 @@
-@include('layout.backend.header')
-@include('layout.backend.top-bar')
-@include('layout.backend.left-sidebar')
+@include('layout.admin.header')
+@include('layout.admin.top-bar')
+@include('layout.admin.left-sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -87,7 +87,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <@include('layout.backend.footer-bottom')
+  <@include('layout.admin.footer-bottom')
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -100,49 +100,49 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="{{asset('public/backend')}}/plugins/jquery/jquery.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="{{asset('public/backend')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="{{asset('public/backend')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('public/backend')}}/dist/js/adminlte.js"></script>
+<script src="{{asset('public/admin')}}/dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="{{asset('public/backend')}}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="{{asset('public/backend')}}/plugins/raphael/raphael.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="{{asset('public/admin')}}/plugins/raphael/raphael.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="{{asset('public/backend')}}/plugins/chart.js/Chart.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/chart.js/Chart.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('public/backend')}}/dist/js/demo.js"></script>
+<script src="{{asset('public/admin')}}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('public/backend')}}/dist/js/pages/dashboard2.js"></script>
+<script src="{{asset('public/admin')}}/dist/js/pages/dashboard2.js"></script>
 
 <!-- jQuery -->
-<script src="{{asset('public/backend')}}/plugins/jquery/jquery.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('public/backend')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
-<script src="{{asset('public/backend')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/jszip/jszip.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="{{asset('public/backend')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/jszip/jszip.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="{{asset('public/admin')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('public/backend')}}/dist/js/adminlte.min.js"></script>
+<script src="{{asset('public/admin')}}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('public/backend')}}/dist/js/demo.js"></script>
+<script src="{{asset('public/admin')}}/dist/js/demo.js"></script>
 
 <!-- Page specific script -->
 <script>
