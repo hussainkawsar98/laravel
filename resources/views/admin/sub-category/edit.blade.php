@@ -37,18 +37,28 @@
                   <li class="alert bg-danger">{{ $error }}</li>
               @endforeach
               </ul>
-              <form action="{{route('sub-category.update', $data->id)}}" method="POST">
-                <input type="hidden" name="_method" value="PUT">
-                @csrf
+              <form action="{{route('sub-category.update', $subcategory->id)}}" method="POST">
+                @csrf 
+                <div class="mb-3">
+                  <label class="form-label">Parent Category Name</label>
+                    <select name="category_id" class="form-control">
+                      @foreach($category as $row)
+                      <option value="{{$row->id}}" @if($row->id==$subcategory->category_id) selected @endif> {{$row->category_name}}</option>
+                      @endforeach
+                  </select>
+                </div>         
                 <div class="mb-3">
                   <label class="form-label">Edit Subcategory</label>
                   <input type="hidden" name="_method" value="PUT">
-                  <input type="text" class="form-control" placeholder="Write Here" name="subcategory_name"  value="{{$data->subcategory_name}}">
+                  <input type="text" class="form-control" name="subcategory_name"  value="{{$subcategory->subcategory_name}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Update Subcategory</button>
               </form>
             </div>
           </div>
+
+          
+            
         </div>
       <!-- End New category Form -->
       </div><!--/. container-fluid -->

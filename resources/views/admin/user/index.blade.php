@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Sub Categories</h1>
+            <h1>User List</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Categories</li>
+              <li class="breadcrumb-item active">Users</li>
             </ol>
           </div>
         </div>
@@ -40,18 +40,22 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Parent Category Name</th>
-                    <th>Sub Category Name</th>
-                    <th>Sub Category Slug</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Post </th>
+                    <th>Category ID</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     @foreach($data as $row)
                   <tr>
-                    <td>{{$row->category->category_name}}</td>
-                    <td>{{$row->subcategory_name}}</td>
-                    <td>{{$row->subcategory_slug}}</td>
+                    <td>{{$row->name}}</td>
+                    <td>{{$row->email}}</td>
+                    <td>{{$row->phone}}</td>
+                    <td>{{$row->id}}</td>
+                    <td>{{$row->category_id}}</td>
                     <td>
                     <a href="{{route('sub-category.edit', $row->id)}}" class="m-1"><i class="fa-solid fa-pen-to-square"></i></a>
                     <form action="{{route('sub-category.destroy', $row->id)}}" class="d-inline" method="POST">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title>B Blog</title>
   <!-- Favicon Icon -->
   <link rel="shortcut icon" href="{{asset('public/admin')}}/dist/img/favicon.png" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->

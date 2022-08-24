@@ -1,7 +1,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{url('/admin')}}" class="brand-link">
       <img src="{{asset('public/admin')}}/dist/img/Logo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
     </a>
 
@@ -52,13 +52,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('admin/posts')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Post</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('admin/posts/create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Post</p>
                 </a>
@@ -124,6 +124,29 @@
                 <a href="pages/examples/invoice.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Invoice</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Users
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New User</p>
                 </a>
               </li>
             </ul>

@@ -75,8 +75,9 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
-        $data = Subcategory::find($id);
-        return view('admin.sub-category.edit', compact('data'));
+        $category = Category::all();
+        $subcategory = Subcategory::find($id);
+        return view('admin.sub-category.edit', compact('category', 'subcategory'));
     }
 
     /**
@@ -88,20 +89,15 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $data = Subcategory::find($id);
+       $subcategory = Subcategory::find($id);
 
-       $valiadted = $request->validate([
-            'subcategory_name' => 'required|unique:subcategories'
-        ]);
-        return response()->json($data);
-        $data -> update([
-            'subcategory_name' => $request->subcategory_name,
-            'subcategory_slug' => Str::of($request->subcategory_name)->slug('-')
-        ]);
-        return redirect()->route('sub-category.index')->with('success', 'Update Successfully.');
-
+        $subcategory->category_id = $request->category_id;
+        $subcategory->subcategory_name = $request->subcategory_name;
+        $subcategory->subcategory_slug =Str::of($request->subcategory_name)->slug('-');
+        $subcategory->save();
+        return redirect()->route('sub-category.index')->with('success', 'Successfully Updated.');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -110,6 +106,7 @@ class SubcategoryController extends Controller
      */
     public function destroy($id)
     {
-       
+        Subcategory::find($id)->delete();
+        return redirect()->back()->with('success', 'Delete Successfully');
     }
 }

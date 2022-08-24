@@ -40,9 +40,9 @@
               <form action="{{ route('sub-category.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label class="form-label">Select Parent adminCategory</label>
+                  <label class="form-label">Select Parent Category</label>
                     <select name="category_id" class="form-control">
-                      <option selected desabled>Select Your Parent Category</option>
+                      <option selected disabled>Select Your Parent Category</option>
                       @foreach($categories as $row)
                       <option value="{{$row->id}}">{{$row->category_name}}</option>
                       @endforeach
