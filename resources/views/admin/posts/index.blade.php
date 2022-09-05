@@ -40,27 +40,35 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>User Name</th>
                     <th>Category Name</th>
                     <th>Title</th>
-                    <th>Description</th>
+                    <th>Author</th>
+                    <th>Published</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     @foreach($data as $row)
                   <tr>
-                    <td>{{$row->name}}</td>
-                    <td>{{$row->category_name}}</td>
+                    <td>{{$row->category->category_name}}</td>
                     <td>{{$row->title}}</td>
-                    <td>{{$row->description}}</td>
+                    <td>{{$row->name}}</td>
+                    <td>{{date('d M y', strtotime($row->post_date))}}</td>
                     <td>
-                    <a href="{{route('category.edit', $row->id)}}" class="m-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <form action="{{route('category.destroy', $row->id)}}" class="d-inline" method="POST">
+                      @if($row->status==1)
+                      <span class="badge badge-success p-2">Active</span>
+                      @else
+                      <span class="badge badge-danger p-2">Inactive</span>
+                      @endif
+                    </td>
+                    <td>
+                    <a href="{{route('posts.edit', $row->id)}}" class="m-1 bg-info text-white rounded action-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <form action="{{route('posts.destroy', $row->id)}}" class="d-inline" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
                         @csrf
-                        <button type="submit" class="btn d-inline"><i class="fa-solid fa-trash-can text-light"></i></button>
+                        <button type="submit" class="bg-danger text-white rounded action-btn"><i class="fa-solid fa-trash-can text-light"></i></button>
                     </form>
                     </td>
                   </tr>

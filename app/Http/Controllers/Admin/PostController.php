@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin\Post;
-use App\Models\Admin\Category;
-use App\Models\Admin\Subcategory;
-use DB;
+use App\Models\Admin\{Post,Category,Subcategory};
+use Illuminate\Support\Str;
+use DB,File,Image;
 
 class PostController extends Controller
 {
@@ -18,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-         $data = Post::all();
+        //$data = Post::all()>orderBy('desc');
+        $data = Post::orderBy('id', 'DESC')->get();
         // $data = DB::table('posts')
         // ->join('users', 'posts.user_id', 'users.id')
         // ->join('categories', 'posts.category_id', 'categories.id')
@@ -46,24 +46,36 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'user_id' => 'required',
             'category_id' => 'required',
             'title' => 'required',
             'post_date' => 'required',
             'description' => 'required',
-            'image' => 'required'
+            'image' => 'nullable|image'
         ]);
-       dd($request->all());
-;
-        // $category = new Category;
-        // $category->category_name = $request->category_name;
-        // $category->category_slug = Str::of($request->category_name)->slug('-');
-        // $category->save();
-
-        Category::insert([
-            'category_name' => $request->category_name,
-            'category_slug' => Str::of($request->category_name)->slug('-')
-            ]);
-        return redirect()->back()->with('success', 'Successfully Inserted!');
+        
+        $slug = Str::of($request->title)->slug('-');
+        $data = array();
+        $data['category_id'] = $request->category_id;
+        $data['user_id'] = $request->user_id;
+        $data['title'] = $request->title;
+        $data['post_date'] = $request->post_date;
+        $data['slug'] = Str::of($request->title)->slug('-');
+        $data['tags'] = $request->tags;
+        $data['status'] = $request->status;
+        $data['description'] =$request->description;
+        $photo = $request->image;
+       
+        if($request->hasFile('image')){
+            $photoname = $slug.'.'.$photo->getClientOriginalExtension();
+            //$photoname = $photo->getClientOriginalName();
+            Image::make($photo)->resize(800, 350)->save('public/media/'.$photoname);
+            $data['image']  = 'public/media/'.$photoname;
+            DB::table('posts')->insert($data);
+            return redirect()->back()->with('success', 'Insert Successfully!');
+        }
+        DB::table('posts')->insert($data);
+        return redirect()->back()->with('success', 'Insert Successfully!');
     }
 
     /**
@@ -85,9 +97,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $data = Category::find($id);
-        return view('admin.category.edit', compact('data'));
+    {   
+        $category = Category::all();
+        $data = Post::find($id);
+        return view('admin.posts.edit', compact('data', 'category'));
     }
 
     /**
@@ -98,17 +111,43 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $data = Category::find($id);
+    {   
         $validated = $request->validate([
-            'category_name' => 'required|unique:categories'
+            'category_id' => 'nullable',
+            'title' => 'nullable',
+            'post_date' => 'nullable',
+            'description' => 'nullable',
+            'image' => 'nullable|image'
         ]);
+
+        $slug = Str::of($request->title)->slug('-');
+        $data = array();
+        $data['category_id'] = $request->category_id;
+        $data['user_id'] = $request->user_id;
+        $data['title'] = $request->title;
+        $data['post_date'] = $request->post_date;
+        $data['slug'] = Str::of($request->title)->slug('-');
+        $data['tags'] = $request->tags;
+        $data['status'] = $request->status;
+        $data['description'] =$request->description;
+        $photo = $request->image;
+       
+        if($request->hasFile('image')){
+            //__Old Image deelete__//
+            if(File::exists($request->old_image)){
+                File::delete($request->old_image);
+            }
+            $photoname = $slug.'.'.$photo->getClientOriginalExtension();
+            //$photoname = $photo->getClientOriginalName();
+            Image::make($photo)->resize(800, 350)->save('public/media/'.$photoname);
+            $data['image']  = 'public/media/'.$photoname;
+            DB::table('posts')->where('id', $id)->update($data);
+            return redirect()->route('posts.index')->with('success', 'Insert Successfully!');
+        }else{
+            DB::table('posts')->where('id', $id)->update($data);
+            return redirect()->route('posts.index')->with('success', 'Insert Successfully!');
+        }
         
-        $data->update([
-            'category_name' => $request->category_name,
-            'category_slug' => Str::of($request->category_name)->slug('-'),
-        ]);
-        return redirect()->route('category.index')->with('success', 'Updated Success!');
     }
 
     /**
@@ -119,7 +158,24 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('categories')->where('id', $id)->delete();
+        //__Model__//
+        $post = Post::find($id);
+        if(File::exists($post->image)){
+            File::delete($post->image);
+            $post->delete();
+        }else{
+            $post->delete();
+        }
+
+        //Query Builder
+        // $post = DB::table('posts')->where('id', $id)->first();
+        // if(File::exists($post->image)){
+        //         File::delete($post->image);
+        //         $post = DB::table('posts')->where('id', $id)->delete();
+        //     }else{
+        //         $post = DB::table('posts')->where('id', $id)->delete();
+        //     }
+        
         return redirect()->back()->with('success', 'Delete Successfully');
     }
 }

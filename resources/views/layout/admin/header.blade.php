@@ -19,12 +19,14 @@
   <link rel="stylesheet" href="{{asset('public/admin')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('public/admin')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('public/admin')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Summer Note -->
+  <link rel="stylesheet" href="{{asset('public/admin')}}/plugins/summernote/summernote.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('public/admin')}}/dist/css/adminlte.min.css">
   <!-- Custom style -->
   <link rel="stylesheet" href="{{asset('public/admin')}}/dist/css/style.css">
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition bg-light sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->

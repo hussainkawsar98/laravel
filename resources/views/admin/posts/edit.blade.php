@@ -37,45 +37,45 @@
                   <li class="alert bg-danger">{{ $error }}</li>
               @endforeach
               </ul>
-              <form action="{{ route('posts.store') }}" method="POST" class="mb-4 input-data-field" enctype="multipart/form-data">
+              <form action="{{ route('posts.update', $data->id) }}" method="POST" class="mb-4 input-data-field" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="_method" value="PUT">
                 <div class="mb-3">
                   <label class="form-label">Post Tilte</label>
-                  <input type="text" class="form-control" placeholder="Write Title" name="title" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">User ID</label>
-                  <input type="number" class="form-control" name="user_id" required>
+                  <input type="text" value="{{$data->title}}" class="form-control" placeholder="Write Title" name="title" required>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Category</label>
                   <select name="category_id" value="" class="form-control select" required>
                     <option selected disabled>Choose Category</option>
                     @foreach($category as $cat)
-                    <option value="{{$cat->id}}">{{$cat->category_name}}</option>
+                    <option value="{{$cat->id}}" @if($cat->id == $data->category_id) selected @endif>{{$cat->category_name}}</option>
                     @endforeach
                   </select>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Post Date</label>
-                  <input type="date" class="form-control" name="post_date" required>
+                  <input type="date"  value="{{$data->post_date}}" class="form-control" name="post_date" required>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tags</label>
-                  <input type="text" class="form-control" name="tags">
+                  <input type="text" value="{{$data->tags}}" class="form-control" name="tags">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Description</label>
-                  <textarea class="form-control" id="summernote" name="description" cols="30" rows="4"></textarea>
+                  <textarea class="form-control" id="summernote" name="description" cols="30" rows="4">{{$data->	description}}</textarea>
                 </div>
                 <div class="mb-3">
-                    <input type="file" name="image">
+                  <p class="form-label mt-4">Old Image</p>
+                  <img src="{{asset($data->image)}}" class="img-fluid pb-4" alt="">
+                  <input type="hidden" name="old_image" value="{{$data->image}}">
+                  <input type="file" name="image">
                 </div>
                 <div class="mb-3">
-                    <input type="checkbox" name="status" id="status" value="1">
+                    <input type="checkbox" name="status" id="status" value="1" @if($data->status==1) checked @endif>
                     <label for="status" class="form-label">Published Now</label>
                 </div>
-                <button type="submit" class="btn btn-primary mb-4">Save Post</button>
+                <button type="submit" class="btn btn-primary mb-4">Update Post</button>
               </form>
             </div>
           </div>

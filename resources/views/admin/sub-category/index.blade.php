@@ -53,12 +53,12 @@
                     <td>{{$row->subcategory_name}}</td>
                     <td>{{$row->subcategory_slug}}</td>
                     <td>
-                    <a href="{{route('sub-category.edit', $row->id)}}" class="m-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{route('sub-category.edit', $row->id)}}" class="m-1 bg-info text-white rounded action-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                     <form action="{{route('sub-category.destroy', $row->id)}}" class="d-inline" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
                         @csrf
-                        <button type="submit" class="btn d-inline"><i class="fa-solid fa-trash-can text-light"></i></button>
+                        <button type="submit" class="bg-danger text-white rounded action-btn"><i class="fa-solid fa-trash-can text-light"></i></button>
                     </form>
                     </td>
                   </tr>

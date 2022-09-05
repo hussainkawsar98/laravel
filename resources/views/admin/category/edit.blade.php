@@ -37,14 +37,14 @@
                   <li class="alert bg-danger">{{ $error }}</li>
               @endforeach
               </ul>
-              <form action="{{route('category.update', $data->id)}}" method="POST">
+              <form action="{{route('category.update', $data->id)}}" class="input-data-field" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label class="form-label">Edit Category</label>
                   <input type="hidden" name="_method" value="PUT">
                   <input type="text" class="form-control" placeholder="Write Here" name="category_name"  value="{{$data->category_name}}">
                 </div>
-                <button type="submit" class="btn btn-primary">Update Category</button>
+                <button type="submit" class="btn btn-primary mb-4">Update Category</button>
               </form>
             </div>
           </div>

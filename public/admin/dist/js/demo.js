@@ -6,6 +6,11 @@
  */
 
 /* eslint-disable camelcase */
+// Summer Note JQuery
+$(document).ready(function() {
+  $('#summernote').summernote();
+});
+
 
 (function ($) {
   'use strict'

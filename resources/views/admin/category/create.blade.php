@@ -37,13 +37,13 @@
                   <li class="alert bg-danger">{{ $error }}</li>
               @endforeach
               </ul>
-              <form action="{{ route('category.store') }}" method="POST">
+              <form action="{{ route('category.store') }}" class="input-data-field" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label class="form-label">New Category</label>
                   <input type="text" class="form-control" placeholder="Write Here" name="category_name">
                 </div>
-                <button type="submit" class="btn btn-primary">Add Category</button>
+                <button type="submit" class="btn btn-primary mb-4">Add Category</button>
               </form>
             </div>
           </div>

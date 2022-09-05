@@ -37,11 +37,11 @@
                   <li class="alert bg-danger">{{ $error }}</li>
               @endforeach
               </ul>
-              <form action="{{ route('sub-category.store') }}" method="POST">
+              <form action="{{ route('sub-category.store') }}" class="input-data-field" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label class="form-label">Select Parent Category</label>
-                    <select name="category_id" class="form-control">
+                    <select name="category_id" class="form-control select">
                       <option selected disabled>Select Your Parent Category</option>
                       @foreach($categories as $row)
                       <option value="{{$row->id}}">{{$row->category_name}}</option>
@@ -52,7 +52,7 @@
                   <label class="form-label">New Category</label>
                   <input type="text" class="form-control" placeholder="Write Here" name="subcategory_name">
                 </div>
-                <button type="submit" class="btn btn-primary">Add Sub Category</button>
+                <button type="submit" class="btn btn-primary mb-4">Add Sub Category</button>
               </form>
             </div>
           </div>

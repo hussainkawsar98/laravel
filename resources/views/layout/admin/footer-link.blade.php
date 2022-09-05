@@ -16,7 +16,8 @@
 <script src="{{asset('public/admin')}}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
 <script src="{{asset('public/admin')}}/plugins/chart.js/Chart.min.js"></script>
-
+<!-- Summer Note jQuery -->
+<script src="{{asset('public/admin')}}/plugins/summernote/summernote.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('public/admin')}}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

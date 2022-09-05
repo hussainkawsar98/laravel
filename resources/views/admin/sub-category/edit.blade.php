@@ -37,11 +37,12 @@
                   <li class="alert bg-danger">{{ $error }}</li>
               @endforeach
               </ul>
-              <form action="{{route('sub-category.update', $subcategory->id)}}" method="POST">
+              <form action="{{route('sub-category.update', $subcategory->id)}}" class="input-data-field" method="POST">
                 @csrf 
                 <div class="mb-3">
                   <label class="form-label">Parent Category Name</label>
-                    <select name="category_id" class="form-control">
+                    <select name="category_id" class="form-control select">
+                    <option selected disabled>Select Your Parent Category</option>
                       @foreach($category as $row)
                       <option value="{{$row->id}}" @if($row->id==$subcategory->category_id) selected @endif> {{$row->category_name}}</option>
                       @endforeach
@@ -52,7 +53,7 @@
                   <input type="hidden" name="_method" value="PUT">
                   <input type="text" class="form-control" name="subcategory_name"  value="{{$subcategory->subcategory_name}}">
                 </div>
-                <button type="submit" class="btn btn-primary">Update Subcategory</button>
+                <button type="submit" class="btn btn-primary mb-4">Update Subcategory</button>
               </form>
             </div>
           </div>

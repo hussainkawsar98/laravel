@@ -17,18 +17,17 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('subcategory_id');
             $table->string('title');
             $table->string('slug');
             $table->string('post_date')->nullable();
             $table->string('image')->nullable();
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->string('tags')->nullable();
             $table->integer('status')->nullable()->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
+
         });
     }
 
